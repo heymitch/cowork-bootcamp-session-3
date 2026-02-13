@@ -1,11 +1,11 @@
 ---
 name: meeting-prep
-description: Prepare a comprehensive brief before any meeting by pulling from Gmail, Slack, Google Docs, and Fireflies. Say "Prep me for my meeting with [person]" or "Brief me on my next call".
+description: Research anyone before a meeting — web search, email history, past transcripts, CRM — and walk in with a full brief plus a rapport builder. Say "Prep me for my meeting with [person]" or "Brief me on my next call".
 ---
 
 # Meeting Prep
 
-Build a complete meeting brief by pulling from your email, Slack, documents, and past meeting transcripts — all at once.
+Never walk into a meeting cold. This agent researches the person, pulls your shared history from every connected source, finds a rapport builder, and gives you a brief that would take 20 minutes to build manually.
 
 ## How to Run
 
@@ -15,71 +15,71 @@ Build a complete meeting brief by pulling from your email, Slack, documents, and
 
 ---
 
-## Preflight Check (Run Every Time)
+## Preflight Check (Run Silently)
 
-Run through this silently. Only speak up if something is missing.
+### 1. Config check
+Read `config.md` from project root.
+- **Missing:** Stop. Say: "Say **'Run my business blueprint'** first — takes 5 minutes."
+- **Exists:** Continue.
 
-### 1. Does config.md exist?
-Read `config.md` from the project root.
-- **If missing:** Stop. Say: "I need to know about you and your business first. Say **'Run my business blueprint'** — it takes 5 minutes."
-- **If exists:** Continue.
+### 2. Connector inventory (silent)
+Check available tools and build a source list:
+- **Web search** → always available (person intelligence)
+- **Gmail tools** → email threads + transcript emails from Fireflies/Fathom/Otter/Zoom
+- **Fireflies tools** → full meeting transcripts
+- **Notion tools** → CRM/Book of Names, project pages
+- **Slack tools** → channel mentions and threads
+- **Google Docs tools** → shared documents
+- **Calendar tools** → meeting details
 
-### 2. Which connectors are available?
-Check your available tools for each of these. Build a list of what's available:
-- **Gmail tools** → can pull email threads AND meeting transcript emails (see Step 2 below)
-- **Slack tools** → can pull channel mentions and threads
-- **Google Drive/Docs tools** → can pull shared documents
-- **Fireflies tools** → can pull meeting transcripts directly
-- **Calendar tools** → can check meeting details
+Update config.md checkboxes for any newly found connectors.
+- **Zero connectors:** Still works — web research + user-provided context. Note what's missing at the end.
 
-For each connector found, if config.md has it unchecked in Setup Status, update it to checked.
-
-- **If zero connectors found:** Say: "I don't have any of your tools connected yet, so I can't pull context automatically. I can still build a brief if you paste what you know — emails, notes, or just tell me about this person. Or I can walk you through connecting Gmail — it takes two clicks and unlocks meeting history from your email."
-- **If at least one found:** Continue. Note which sources are available and which aren't — only pull from what's connected.
-
-### 3. All clear — proceed silently.
+### 3. All clear — proceed without announcing.
 
 ---
 
-## What the Agent Does
+## The Process
 
-Step 1: Check calendar for the meeting details (who, when, what). If no calendar tools, ask the user.
+### Step 1: Get Meeting Details
+Check calendar for who, when, what. If no calendar tools, ask: "Who are you meeting with and what's it about?"
 
-Step 2: Pull context from every connected source (skip unavailable ones silently):
+### Step 2: Person Intelligence (Web Search)
+Search the web for the person. See `references/person-research.md` for search patterns.
+Build: name, title, company, career background, online presence, recent news.
+This is the "never get caught not knowing who someone is" layer.
 
-- **Gmail**: Two passes:
-  1. **Email threads** — recent conversations with this person/company
-  2. **Meeting transcript emails** — search for emails from Fireflies, Fathom, Otter, Zoom, Google Meet, or any meeting recorder. These services email summaries after every call. Search for the person/company name in those emails to find past meeting context. Common sender patterns:
-     - Fireflies: "from:fireflies.ai"
-     - Fathom: "from:fathom.video"
-     - Otter: "from:otter.ai"
-     - Zoom: "from:zoom.us" subject contains "recording" or "transcript"
-     - Google Meet: "from:meet.google.com" or meeting notes
-     - Read.ai: "from:read.ai"
-  This means **Gmail alone gives you meeting history** — no separate transcript connector required.
+### Step 3: Relationship History (Connected Sources)
+Pull from every available source — skip unavailable ones silently:
+- **CRM/Notion:** Check Book of Names for stored contact profile and rapport notes
+- **Gmail (two passes):** (1) email threads with this person/company, (2) meeting transcript emails from Fireflies/Fathom/Otter/Zoom/Read.ai
+- **Fireflies:** Full transcripts from past meetings (richer than email summaries)
+- **Slack:** Recent mentions or threads about this person/project
+- **Google Docs:** Shared documents, proposals, contracts
 
-- **Slack**: Recent mentions or threads about this person/project
-- **Google Docs**: Any shared documents or proposals
-- **Fireflies** (if connected): Full transcripts from past meetings — richer than email summaries but not required
+### Step 4: Rapport Builder
+Find ONE thing to open with that makes them feel known. See `references/rapport-building.md`.
+- Check CRM for stored rapport notes first
+- Then: shared connections, specific post they wrote, recent accomplishment, mutual interest
+- If nothing found, use web research (reference a talk, article, or recent company news)
 
-Step 3: Build the brief:
-- **Who you're meeting**: Name, role, company, relationship summary
-- **Last interaction**: When you last spoke and what was discussed
-- **Open items**: Action items from past meetings that haven't been completed
-- **Recent context**: What's been happening in email/Slack since your last meeting
-- **Key documents**: Links to relevant shared docs
-- **Suggested talking points**: Based on open items and recent context
-- **Sources used**: List which connectors contributed (so user knows what's missing)
+### Step 5: Compile the Brief
+Use the template from `references/brief-template.md`:
+Who → Shared History → Open Items → Recent Context → Rapport Builder → Talking Points → Sources Used.
+Adapt for first meetings vs. recurring contacts vs. group meetings.
 
-Step 4: Show the brief for review.
+### Step 6: Show Brief
+Present the full brief. **Do not save yet.** Wait for approval or edits.
 
-Step 5: Save as a file (or to Notion if connected).
+### Step 7: Save + Rolodex Update
+On approval: save brief to Notion or local file.
+Prompt: "Want me to add [person] to your Book of Names for next time?" — save contact profile to CRM/Notion with rapport notes.
 
 ## Rules
 
 - Only pull from connectors that are actually available — skip the rest silently.
-- If a connector has no relevant results, say so instead of making something up.
+- If a source returns nothing relevant, say so. Never fabricate history.
 - Always show the brief before saving.
-- Flag anything that looks urgent or time-sensitive.
-- If the meeting is with someone new (no history), say so and focus on what's available.
-- At the end, if key connectors are missing, mention once: "This brief would be stronger with [Gmail/Fireflies/etc] connected. Want me to walk you through it?"
+- Flag urgent or time-sensitive items.
+- For new contacts: lean heavy on web research + rapport builder. For returning contacts: lean heavy on history + open items.
+- At the end, if key connectors are missing, mention once: "This brief would be stronger with [source] connected."
