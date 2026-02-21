@@ -1,0 +1,8 @@
+{
+  "name": "meeting-prep",
+  "version": "2.0.0",
+  "description": "Never walk into a meeting cold — gather context from Gmail, Slack, Docs, and Fireflies, build a comprehensive brief, track action items, and write follow-up emails.",
+  "author": { "name": "Speakeasy" },
+  "license": "UNLICENSED",
+  "keywords": ["cowork", "bootcamp", "session-3"]
+}
