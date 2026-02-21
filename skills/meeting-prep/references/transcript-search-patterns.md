@@ -1,6 +1,6 @@
-# Transcript Search Patterns
+# Meeting Recap Search Patterns
 
-How to find meeting transcripts in Gmail. Most people don't know they have transcripts sitting in their inbox. Meeting recording services email summaries automatically after every call. This guide shows you how to find them.
+How to find meeting recaps and summaries in Gmail. Most recording services email a recap or summary after every call — not a full transcript. The subject line usually says "recap", "summary", or "meeting notes". Search for those terms first, then fall back to "transcript" if nothing comes up.
 
 ---
 
@@ -34,7 +34,9 @@ from:fireflies.ai subject:"meeting notes"
 
 **Sender:** `from:fathom.video` or `from:app.fathom.video`
 **Subject patterns:**
+- "Your call with [Person] — Recap"
 - "Your call with [Person] — Summary"
+- "Meeting recap: [Title]"
 - "Meeting summary: [Title]"
 - "[Title] — Fathom Recording"
 
@@ -48,7 +50,8 @@ from:fireflies.ai subject:"meeting notes"
 ```
 from:fathom.video [person name]
 from:fathom.video [company name]
-from:fathom.video subject:summary
+from:fathom.video subject:recap
+from:fathom.video (recap OR summary)
 ```
 
 ---
@@ -181,11 +184,11 @@ from:grain.co [person name]
 If you're not sure which recording service someone uses (or if they use one at all), run a broad search:
 
 ```
-[person name] (transcript OR recording OR "meeting notes" OR "meeting summary" OR recap)
+[person name] (recap OR summary OR "meeting notes" OR recording OR transcript)
 ```
 
 ```
-[company name] (transcript OR recording OR "meeting notes" OR "meeting summary")
+[company name] (recap OR summary OR recording OR "meeting notes" OR transcript)
 ```
 
 ```

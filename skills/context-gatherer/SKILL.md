@@ -36,7 +36,7 @@ Speed matters. Pull from every available source at the same time — do not go o
 
 **Gmail (two passes):**
 1. Email threads — search for emails to/from the person or company domain. Pull last 90 days.
-2. Meeting transcript emails — use the patterns from `../meeting-prep/references/transcript-search-patterns.md`. Search for transcript emails mentioning the person or company. This catches Fireflies, Fathom, Otter, Zoom, Read.ai, and others.
+2. Meeting recaps and summaries — use the patterns from `../meeting-prep/references/transcript-search-patterns.md`. Search for recap/summary emails mentioning the person or company. Most recording services (Fireflies, Fathom, Otter, Zoom, Read.ai) email recaps and summaries — not full transcripts. Search for "recap", "summary", and "meeting notes" before trying "transcript".
 
 **Slack:**
 - Search for the person's name and company name across channels you're in. Pull last 90 days of mentions and threads.
@@ -45,7 +45,7 @@ Speed matters. Pull from every available source at the same time — do not go o
 - Search for documents shared with the person or containing their name/company. Pull document titles, last modified dates, and brief content summaries.
 
 **Fireflies:**
-- Search for meeting transcripts with this person as a participant. Pull last 90 days.
+- Search for meeting recaps with this person as a participant. Pull last 90 days.
 
 **Calendar:**
 - Search for past and upcoming meetings with this person. Pull meeting titles, dates, attendees, and descriptions.
@@ -61,8 +61,8 @@ Gathered: [date and time]
 ### Gmail — Email Threads
 [List of relevant email threads with dates and one-line summaries]
 
-### Gmail — Meeting Transcripts
-[List of transcript emails found, with dates and summaries]
+### Gmail — Meeting Recaps & Summaries
+[List of recap/summary emails found, with dates and summaries]
 
 ### Slack
 [Relevant mentions and thread summaries]
@@ -71,7 +71,7 @@ Gathered: [date and time]
 [List of shared documents with titles and last modified]
 
 ### Fireflies
-[Transcript summaries with dates]
+[Meeting summaries with dates]
 
 ### Calendar
 [Past and upcoming meetings with dates and titles]
